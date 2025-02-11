@@ -1,0 +1,53 @@
+.projectCard {
+  height: 100%;
+  transition: all 0.3s;
+
+  img {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.09);
+  }
+}
+
+.projectTag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.cardContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.cardIcon {
+  font-size: 32px;
+  color: #1890ff;
+  padding: 8px;
+  background: #e6f7ff;
+  border-radius: 8px;
+}
+
+.textContent {
+  flex: 1;
+
+  h4 {
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+
+  .ant-typography {
+    margin-bottom: 0;
+    color: #666;
+  }
+}
