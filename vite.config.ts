@@ -28,4 +28,20 @@ export default defineConfig({
       generateScopedName: "[name]__[local]___[hash:base64:5]",
     },
   },
+  server: {
+    headers: {
+      // 要求文档必须通过 COEP 标头指定的策略来加载资源
+      "Cross-Origin-Embedder-Policy": "require-corp",
+      // 确保顶级文档与任何加载的资源都遵循同源策略
+      "Cross-Origin-Opener-Policy": "same-origin",
+    },
+  },
+  optimizeDeps: {
+    exclude: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
+  },
+  build: {
+    rollupOptions: {
+      external: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
+    },
+  },
 });

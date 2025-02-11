@@ -1,28 +1,50 @@
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Layout, Typography } from "antd";
+import { motion } from "framer-motion";
+import ProjectList from "@/components/ProjectList";
+
+import styles from "./Home.module.less";
+
+const { Content, Footer } = Layout;
+const { Title } = Typography;
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
-
-  const projects = [
-    {
-      title: "视频工具集",
-      icon: "video" as const,
-      description:
-        "一站式视频处理工具，支持视频格式转换、压缩、剪辑、提取音频等功能。简单易用，让视频处理变得更加高效。",
-      link: "/video-tools", // 更新为路由路径
-    },
-    // ... 其他项目
-  ];
-
-  const handleProjectClick = (link: string) => {
-    if (link.startsWith("http")) {
-      window.open(link, "_blank");
-    } else {
-      navigate(link);
-    }
-  };
-
-  // ... 其余代码保持不变，但需要将 Card 的 onClick 更新为 handleProjectClick
+  return (
+    <Layout className={styles.container}>
+      <motion.div
+        className={styles.titleContainer}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.div
+          className={styles.titleWrapper}
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.21, 0.45, 0.32, 0.9],
+          }}
+        >
+          <Title className={styles.mainTitle}>
+            <span className={styles.gradient}>Ryan's</span> AI Lab
+          </Title>
+          <motion.div
+            className={styles.badgeContainer}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            <div className={styles.badge}>项目展示</div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+      <Content className={styles.content}>
+        <ProjectList />
+      </Content>
+      <Footer className={styles.footer}>© 2025 Ryan's</Footer>
+    </Layout>
+  );
 };
 
 export default Home;
