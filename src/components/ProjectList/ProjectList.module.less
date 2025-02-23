@@ -54,16 +54,6 @@
     .projectTitle {
       background-size: 100% 100%;
     }
-
-    .viewButton {
-      border-color: #84cc16;
-      background: linear-gradient(120deg, #84cc16 0%, #65a30d 100%);
-      color: white;
-
-      .arrow {
-        transform: translateX(6px);
-      }
-    }
   }
 }
 
@@ -111,77 +101,7 @@
   flex-grow: 1;
 }
 
-.viewButton {
-  width: 100%;
-  padding: 16px 24px;
-  border: 1px solid #f0f0f0;
-  border-radius: 12px;
-  background: transparent;
-  color: #374151;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(120deg, #84cc16 0%, #65a30d 100%);
-    opacity: 0;
-    border-radius: 12px;
-    transition: opacity 0.4s ease;
-    z-index: 0;
-  }
-
-  span {
-    position: relative;
-    z-index: 1;
-  }
-
-  .arrow {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    color: #84cc16;
-    font-size: 20px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-    svg {
-      width: 20px;
-      height: 20px;
-      stroke-width: 2;
-      stroke: currentColor;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-  }
-
-  &:hover {
-    border-color: #84cc16;
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(132, 204, 22, 0.2);
-
-    &::before {
-      opacity: 1;
-    }
-
-    .arrow {
-      color: white;
-      transform: translateX(6px);
-    }
-  }
-}
 
 // 响应式调整
 @media (max-width: 768px) {

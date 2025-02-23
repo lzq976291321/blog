@@ -25,6 +25,14 @@ const ProjectList: React.FC = () => {
       iconBg: "#f0f9ff",
       iconColor: "#0ea5e9",
     },
+    {
+      title: "检测水印",
+      description: "智能检测图片水印",
+      icon: <FileImageOutlined />,
+      link: "/watermark-detect",
+      iconBg: "#fdf2f8",
+      iconColor: "#ec4899",
+    },
   ];
 
   const handleClick = (link: string) => {
@@ -60,12 +68,6 @@ const ProjectList: React.FC = () => {
               <div className={styles.contentWrapper}>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
                 <p className={styles.projectDesc}>{project.description}</p>
-              </div>
-              <div className={styles.viewButton}>
-                查看项目
-                <svg className={styles.arrow} viewBox="0 0 24 24">
-                  <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" />
-                </svg>
               </div>
             </Card>
           </motion.div>

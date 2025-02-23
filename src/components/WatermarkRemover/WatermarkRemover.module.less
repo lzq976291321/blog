@@ -1,0 +1,103 @@
+.container {
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.remover {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.uploader {
+  :global {
+    .ant-upload {
+      padding: 24px;
+      background: #fafafa;
+      border: 2px dashed #e5e7eb;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #ec4899;
+      }
+    }
+  }
+}
+
+.uploadHint {
+  text-align: center;
+}
+
+.uploadIcon {
+  font-size: 48px;
+  color: #ec4899;
+  margin-bottom: 16px;
+}
+
+.uploadText {
+  font-size: 16px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.uploadDesc {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.preview,
+.resultPreview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  max-height: 400px;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+  }
+}
+
+.controls {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.processBtn {
+  min-width: 120px;
+  height: 40px;
+  background: #ec4899;
+  border-color: #ec4899;
+
+  &:hover {
+    background: #db2777;
+    border-color: #db2777;
+  }
+}
+
+.progress {
+  margin-top: 24px;
+}
+
+.result {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.downloadBtn {
+  margin-top: 16px;
+  height: 40px;
+  background: #ec4899;
+  border-color: #ec4899;
+
+  &:hover {
+    background: #db2777;
+    border-color: #db2777;
+  }
+}

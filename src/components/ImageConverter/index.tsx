@@ -3,6 +3,7 @@ import { Upload, Select, Button, Progress, message } from "antd";
 import { InboxOutlined, DownloadOutlined } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import imageCompression from "browser-image-compression";
+import { useImageUpload } from "@/hooks/useImageUpload";
 import styles from "./ImageConverter.module.less";
 
 const { Dragger } = Upload;
@@ -14,63 +15,19 @@ const supportedFormats = [
   { label: "WEBP", value: "WEBP" },
 ];
 
-interface ImageInfo {
-  file: File;
-  preview: string;
-  format: string;
-}
-
 const ImageConverter: React.FC = () => {
-  const [imageInfo, setImageInfo] = useState<ImageInfo | null>(null);
   const [targetFormat, setTargetFormat] = useState<string>("");
   const [converting, setConverting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [convertedUrl, setConvertedUrl] = useState<string>("");
 
-  const handleUpload = async (info: any) => {
-    // 获取最新上传的文件
-    const file =
-      info.file.originFileObj ||
-      info.fileList[info.fileList.length - 1]?.originFileObj;
-
-    if (!file) {
-      message.error("文件上传失败");
-      return;
-    }
-
-    try {
-      // 验证文件类型
-      const fileType = file.type.toLowerCase();
-      if (!fileType.startsWith("image/")) {
-        message.error("请上传图片文件");
-        return;
-      }
-
-      // 创建预览URL
-      const preview = URL.createObjectURL(file);
-
-      // 获取并标准化格式名称
-      let format = file.type.split("/")[1].toUpperCase();
-      if (format === "JPEG") format = "JPG";
-
-      // 更新状态
-      setImageInfo({
-        file,
-        preview,
-        format,
-      });
-
-      // 重置其他状态
+  const { imageInfo, handleUpload, resetImage } = useImageUpload({
+    validateFormat: true,
+    onSuccess: () => {
       setTargetFormat("");
       setConvertedUrl("");
-      setProgress(0);
-
-      message.success(`${file.name} 上传成功`);
-    } catch (error) {
-      message.error("文件处理失败");
-      console.error("文件处理错误:", error);
-    }
-  };
+    },
+  });
 
   const convertImage = async () => {
     if (!imageInfo || !targetFormat) return;
@@ -198,7 +155,7 @@ const ImageConverter: React.FC = () => {
         <Dragger
           accept="image/*"
           showUploadList={false}
-          beforeUpload={() => false}
+          customRequest={({ onSuccess }) => onSuccess?.("ok")}
           onChange={handleUpload}
           className={styles.uploader}
         >
