@@ -21,7 +21,7 @@ const ImageConverter: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [convertedUrl, setConvertedUrl] = useState<string>("");
 
-  const { imageInfo, handleUpload, resetImage } = useImageUpload({
+  const { imageInfo, handleUpload } = useImageUpload({
     validateFormat: true,
     onSuccess: () => {
       setTargetFormat("");
