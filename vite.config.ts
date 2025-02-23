@@ -69,7 +69,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 1500,
     // Rollup 打包配置
     rollupOptions: {
-      external: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
       output: {
         // 手动分包配置
         manualChunks: {
@@ -80,10 +79,5 @@ export default defineConfig({
         },
       },
     },
-  },
-
-  // 依赖优化配置
-  optimizeDeps: {
-    exclude: ["@ffmpeg/ffmpeg", "@ffmpeg/util"],
   },
 });

@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
-    "@ffmpeg/core": "^0.12.4",
-    "@ffmpeg/ffmpeg": "^0.12.7",
-    "@ffmpeg/util": "^0.12.1",
     "antd": "^5.11.1",
     "browser-image-compression": "^2.0.2",
     "framer-motion": "^10.x",
